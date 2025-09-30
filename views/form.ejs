@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submission Example</title>
+</head>
+<body>
+  <h1>Form Submission Example</h1>
+
+  <!-- GET Method Form -->
+  <h2>GET Method Form</h2>
+  <form method="GET" action="/submit-get">
+    <label for="username-get">Username:</label>
+    <input type="text" id="username-get" name="username" required />
+    <br><br>
+    <label for="email-get">Email:</label>
+    <input type="email" id="email-get" name="email" required />
+    <br><br>
+    <button type="submit">Submit (GET)</button>
+  </form>
+
+  <hr>
+
+  <!-- POST Method Form -->
+  <h2>POST Method Form</h2>
+  <form method="POST" action="/submit-post">
+    <label for="username-post">Username:</label>
+    <input type="text" id="username-post" name="username" required />
+    <br><br>
+    <label for="email-post">Email:</label>
+    <input type="email" id="email-post" name="email" required />
+    <br><br>
+    <button type="submit">Submit (POST)</button>
+  </form>
+
+</body>
+</html>

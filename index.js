@@ -1,3 +1,4 @@
+const { resolveSoa } = require("dns");
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -10,6 +11,8 @@ app.set("views", path.join(__dirname, "views"));
 // Serve static files from public
 app.use(express.static(path.join(__dirname, "public/css")));
 app.use(express.static(path.join(__dirname, "public/js")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
@@ -35,6 +38,20 @@ app.get("/rolldice", (req, res) => {
   let dice = Math.floor(Math.random() * 10) + 1;
   res.render("rolldice.ejs", { dice });
 });
+
+app.get("/form",(req,res)=>{
+  res.render("form.ejs");
+})
+
+app.get('/submit-get',(req,res)=>{
+  let {username,email}=req.query;
+  res.send(`GET form is submitted and user :${username}, and email:${email}`);
+})
+
+app.post("/submit-post",(req,res)=>{
+  let{username,email}=req.body;
+  res.send(`post form is submitted username: ${username} email: ${email}`)
+})
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
